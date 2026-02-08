@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Smart Irrigation & Soil Monitoring System - Automated IoT-based irrigation control for optimal plant growth and water conservation.">
+    <meta name="keywords"
+        content="smart irrigation, soil monitoring, IoT, agriculture, water conservation, automated farming">
+    <title>Smart Irrigation & Soil Monitoring System</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <i data-lucide="sprout" class="logo-icon"></i>
+                <span>SmartSoil</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <i data-lucide="menu"></i>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#monitoring" class="nav-link">Monitoring</a></li>
+                <li><a href="#controls" class="nav-link">Controls</a></li>
+                <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+                <li><a href="#features" class="nav-link">Features</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <div class="hero-gradient"></div>
+            <div class="hero-pattern"></div>
+        </div>
+        <div class="container hero-content">
+            <div class="hero-text">
+                <span class="hero-badge">
+                    <i data-lucide="zap"></i>
+                    IoT-Powered Agriculture
+                </span>
+                <h1 class="hero-title">
+                    Smart Watering for
+                    <span class="gradient-text">Smarter Growth</span>
+                </h1>
+                <p class="hero-description">
+                    An intelligent irrigation system that monitors soil moisture in real-time
+                    and automatically controls water flow for optimal plant health and water conservation.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#monitoring" class="btn btn-primary">
+                        <i data-lucide="activity"></i>
+                        View Dashboard
+                    </a>
+                    <a href="#how-it-works" class="btn btn-secondary">
+                        <i data-lucide="play-circle"></i>
+                        See How It Works
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-value">40%</span>
+                        <span class="stat-label">Water Saved</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-value">24/7</span>
+                        <span class="stat-label">Monitoring</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-value">100%</span>
+                        <span class="stat-label">Automated</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-card">
+                    <div class="hero-card-header">
+                        <span class="status-dot status-online"></span>
+                        <span>System Active</span>
+                    </div>
+                    <div class="hero-gauge">
+                        <svg viewBox="0 0 120 120" class="gauge-svg">
+                            <circle cx="60" cy="60" r="50" class="gauge-bg"></circle>
+                            <circle cx="60" cy="60" r="50" class="gauge-fill" id="heroGauge"></circle>
+                        </svg>
+                        <div class="gauge-center">
+                            <span class="gauge-value" id="heroGaugeValue">68</span>
+                            <span class="gauge-unit">%</span>
+                        </div>
+                    </div>
+                    <p class="hero-card-label">Current Moisture Level</p>
+                </div>
+                <div class="floating-cards">
+                    <div class="float-card float-card-1">
+                        <i data-lucide="droplets"></i>
+                        <span>Optimal</span>
+                    </div>
+                    <div class="float-card float-card-2">
+                        <i data-lucide="power"></i>
+                        <span>Motor OFF</span>
+                    </div>
+                    <div class="float-card float-card-3">
+                        <i data-lucide="shield-check"></i>
+                        <span>Protected</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-wave">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path d="M0,64 C480,150 960,0 1440,64 L1440,120 L0,120 Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Live Monitoring Section -->
+    <section class="monitoring" id="monitoring">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">
+                    <i data-lucide="radio"></i>
+                    Live Data
+                </span>
+                <h2 class="section-title">Real-Time Monitoring</h2>
+                <p class="section-description">
+                    Stay connected to your irrigation system with live soil moisture readings and motor status updates.
+                </p>
+            </div>
+
+            <div class="monitoring-grid">
+                <!-- Soil Moisture Card -->
+                <div class="monitor-card moisture-card">
+                    <div class="card-header">
+                        <div class="card-icon moisture-icon">
+                            <i data-lucide="droplet"></i>
+                        </div>
+                        <div class="card-badge" id="moistureStatus">Optimal</div>
+                    </div>
+                    <h3 class="card-title">Soil Moisture Level</h3>
+
+                    <div class="moisture-gauge">
+                        <svg viewBox="0 0 200 200" class="moisture-svg">
+                            <defs>
+                                <linearGradient id="moistureGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#10b981" />
+                                    <stop offset="100%" style="stop-color:#059669" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="100" cy="100" r="85" class="gauge-track"></circle>
+                            <circle cx="100" cy="100" r="85" class="gauge-progress" id="moistureProgress"></circle>
+                        </svg>
+                        <div class="moisture-value">
+                            <span class="value-number" id="moistureValue">65</span>
+                            <span class="value-unit">%</span>
+                        </div>
+                    </div>
+
+                    <div class="moisture-levels">
+                        <div class="level-item">
+                            <span class="level-dot dry"></span>
+                            <span>Dry (0-30%)</span>
+                        </div>
+                        <div class="level-item">
+                            <span class="level-dot optimal"></span>
+                            <span>Optimal (30-70%)</span>
+                        </div>
+                        <div class="level-item">
+                            <span class="level-dot wet"></span>
+                            <span>Wet (70-100%)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Motor Status Card -->
+                <div class="monitor-card motor-card">
+                    <div class="card-header">
+                        <div class="card-icon motor-icon">
+                            <i data-lucide="settings-2"></i>
+                        </div>
+                        <div class="card-badge motor-badge" id="motorBadge">OFF</div>
+                    </div>
+                    <h3 class="card-title">Motor Status</h3>
+
+                    <div class="motor-visual">
+                        <div class="motor-ring" id="motorRing">
+                            <div class="motor-center">
+                                <i data-lucide="power" id="motorIcon"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="motor-info">
+                        <div class="info-row">
+                            <span class="info-label">Current State</span>
+                            <span class="info-value" id="motorState">Idle</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Mode</span>
+                            <span class="info-value" id="motorMode">Automatic</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Last Active</span>
+                            <span class="info-value" id="lastActive">2 hours ago</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Stats Card -->
+                <div class="monitor-card stats-card">
+                    <div class="card-header">
+                        <div class="card-icon stats-icon">
+                            <i data-lucide="bar-chart-3"></i>
+                        </div>
+                    </div>
+                    <h3 class="card-title">Today's Summary</h3>
+
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <div class="stat-icon water-icon">
+                                <i data-lucide="droplets"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="waterUsed">2.4L</span>
+                                <span class="stat-text">Water Used</span>
+                            </div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-icon cycle-icon">
+                                <i data-lucide="refresh-cw"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="cycleCount">3</span>
+                                <span class="stat-text">Irrigation Cycles</span>
+                            </div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-icon runtime-icon">
+                                <i data-lucide="clock"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="runtime">18m</span>
+                                <span class="stat-text">Motor Runtime</span>
+                            </div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-icon saved-icon">
+                                <i data-lucide="leaf"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="waterSaved">1.2L</span>
+                                <span class="stat-text">Water Saved</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Control Panel Section -->
+    <section class="controls" id="controls">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">
+                    <i data-lucide="sliders"></i>
+                    Control Center
+                </span>
+                <h2 class="section-title">System Controls</h2>
+                <p class="section-description">
+                    Customize your irrigation settings with intuitive controls for threshold, timing, and manual
+                    override.
+                </p>
+            </div>
+
+            <div class="controls-grid">
+                <!-- Threshold Control -->
+                <div class="control-card">
+                    <div class="control-header">
+                        <div class="control-icon threshold-icon">
+                            <i data-lucide="gauge"></i>
+                        </div>
+                        <h3>Moisture Threshold</h3>
+                    </div>
+                    <p class="control-description">
+                        Set the minimum moisture level. When soil drops below this value, irrigation starts
+                        automatically.
+                    </p>
+
+                    <div class="threshold-control">
+                        <div class="threshold-display">
+                            <span class="threshold-value" id="thresholdValue">35</span>
+                            <span class="threshold-unit">%</span>
+                        </div>
+                        <input type="range" id="thresholdSlider" class="threshold-slider" min="10" max="60" value="35"
+                            aria-label="Moisture threshold">
+                        <div class="threshold-labels">
+                            <span>10%</span>
+                            <span>35%</span>
+                            <span>60%</span>
+                        </div>
+                    </div>
+
+                    <div class="threshold-hint">
+                        <i data-lucide="info"></i>
+                        <span>Recommended: 30-40% for most plants</span>
+                    </div>
+                </div>
+
+                <!-- Timer Control -->
+                <div class="control-card">
+                    <div class="control-header">
+                        <div class="control-icon timer-icon">
+                            <i data-lucide="timer"></i>
+                        </div>
+                        <h3>Motor Timer</h3>
+                    </div>
+                    <p class="control-description">
+                        Set how long the motor runs during each irrigation cycle. Auto shut-off prevents overwatering.
+                    </p>
+
+                    <div class="timer-control">
+                        <div class="timer-input-group">
+                            <button class="timer-btn" id="timerDecrease" aria-label="Decrease timer">
+                                <i data-lucide="minus"></i>
+                            </button>
+                            <div class="timer-display">
+                                <input type="number" id="timerInput" class="timer-value" value="5" min="1" max="30"
+                                    aria-label="Timer duration in minutes">
+                                <span class="timer-unit">minutes</span>
+                            </div>
+                            <button class="timer-btn" id="timerIncrease" aria-label="Increase timer">
+                                <i data-lucide="plus"></i>
+                            </button>
+                        </div>
+
+                        <div class="timer-presets">
+                            <button class="preset-btn" data-time="3">3 min</button>
+                            <button class="preset-btn active" data-time="5">5 min</button>
+                            <button class="preset-btn" data-time="10">10 min</button>
+                            <button class="preset-btn" data-time="15">15 min</button>
+                        </div>
+                    </div>
+
+                    <div class="timer-progress" id="timerProgressContainer" style="display: none;">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="timerProgressFill"></div>
+                        </div>
+                        <span class="progress-text" id="timerProgressText">0:00 remaining</span>
+                    </div>
+                </div>
+
+                <!-- Manual Control -->
+                <div class="control-card manual-control-card">
+                    <div class="control-header">
+                        <div class="control-icon manual-icon">
+                            <i data-lucide="hand"></i>
+                        </div>
+                        <h3>Manual Override</h3>
+                    </div>
+                    <p class="control-description">
+                        Take direct control of the motor. Manual mode bypasses automatic threshold-based irrigation.
+                    </p>
+
+                    <div class="manual-control">
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="motorToggle" class="toggle-input">
+                            <label for="motorToggle" class="toggle-label">
+                                <span class="toggle-inner"></span>
+                                <span class="toggle-switch-handle"></span>
+                            </label>
+                        </div>
+                        <div class="toggle-status">
+                            <span class="status-text" id="toggleStatus">Motor is OFF</span>
+                            <span class="status-mode" id="toggleMode">Automatic Mode</span>
+                        </div>
+                    </div>
+
+                    <div class="manual-warning">
+                        <i data-lucide="alert-triangle"></i>
+                        <span>Manual mode disables automatic irrigation until turned off</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">
+                    <i data-lucide="cpu"></i>
+                    Automation Logic
+                </span>
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-description">
+                    Our smart system uses a simple but effective decision-making process to keep your plants healthy.
+                </p>
+            </div>
+
+            <div class="workflow">
+                <div class="workflow-line"></div>
+
+                <div class="workflow-step">
+                    <div class="step-number">1</div>
+                    <div class="step-card">
+                        <div class="step-icon sense-icon">
+                            <i data-lucide="radio-tower"></i>
+                        </div>
+                        <h3>Sense</h3>
+                        <p>Soil moisture sensor continuously measures water content in the soil</p>
+                    </div>
+                </div>
+
+                <div class="workflow-arrow">
+                    <i data-lucide="arrow-right"></i>
+                </div>
+
+                <div class="workflow-step">
+                    <div class="step-number">2</div>
+                    <div class="step-card">
+                        <div class="step-icon analyze-icon">
+                            <i data-lucide="brain"></i>
+                        </div>
+                        <h3>Analyze</h3>
+                        <p>System compares current moisture level with your set threshold</p>
+                    </div>
+                </div>
+
+                <div class="workflow-arrow">
+                    <i data-lucide="arrow-right"></i>
+                </div>
+
+                <div class="workflow-step">
+                    <div class="step-number">3</div>
+                    <div class="step-card">
+                        <div class="step-icon decide-icon">
+                            <i data-lucide="git-branch"></i>
+                        </div>
+                        <h3>Decide</h3>
+                        <p>If moisture is below threshold, trigger irrigation; otherwise, wait</p>
+                    </div>
+                </div>
+
+                <div class="workflow-arrow">
+                    <i data-lucide="arrow-right"></i>
+                </div>
+
+                <div class="workflow-step">
+                    <div class="step-number">4</div>
+                    <div class="step-card">
+                        <div class="step-icon act-icon">
+                            <i data-lucide="zap"></i>
+                        </div>
+                        <h3>Act</h3>
+                        <p>Motor activates for the set duration, then automatically shuts off</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="logic-diagram">
+                <div class="diagram-card">
+                    <h4>Decision Logic</h4>
+                    <div class="diagram-flow">
+                        <div class="flow-item sensor">
+                            <i data-lucide="thermometer"></i>
+                            <span>Sensor Reading</span>
+                        </div>
+                        <div class="flow-connector">
+                            <i data-lucide="chevron-down"></i>
+                        </div>
+                        <div class="flow-decision">
+                            <span>Moisture < Threshold?</span>
+                        </div>
+                        <div class="flow-branches">
+                            <div class="branch yes">
+                                <span class="branch-label">Yes</span>
+                                <div class="flow-item action-on">
+                                    <i data-lucide="power"></i>
+                                    <span>Start Motor</span>
+                                </div>
+                            </div>
+                            <div class="branch no">
+                                <span class="branch-label">No</span>
+                                <div class="flow-item action-wait">
+                                    <i data-lucide="pause"></i>
+                                    <span>Wait & Monitor</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">
+                    <i data-lucide="sparkles"></i>
+                    Capabilities
+                </span>
+                <h2 class="section-title">Smart Features</h2>
+                <p class="section-description">
+                    Everything you need for intelligent, automated irrigation management.
+                </p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i data-lucide="activity"></i>
+                    </div>
+                    <h3>Real-Time Monitoring</h3>
+                    <p>Live soil moisture readings updated continuously for accurate decision-making.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i data-lucide="bot"></i>
+                    </div>
+                    <h3>Automatic Irrigation</h3>
+                    <p>Hands-free watering triggered automatically when soil becomes too dry.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i data-lucide="sliders-horizontal"></i>
+                    </div>
+                    <h3>Custom Thresholds</h3>
+                    <p>Set your own moisture levels to match the specific needs of your plants.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i data-lucide="clock"></i>
+                    </div>
+                    <h3>Timer Control</h3>
+                    <p>Configure irrigation duration with automatic shut-off for precise water delivery.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i data-lucide="droplet-off"></i>
+                    </div>
+                    <h3>Water Conservation</h3>
+                    <p>Smart algorithms reduce water waste by irrigating only when necessary.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i data-lucide="smartphone"></i>
+                    </div>
+                    <h3>Beginner Friendly</h3>
+                    <p>Intuitive interface designed for easy use without technical expertise.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Safety Section -->
+    <section class="safety" id="safety">
+        <div class="container">
+            <div class="safety-content">
+                <div class="safety-text">
+                    <span class="section-badge">
+                        <i data-lucide="shield"></i>
+                        Safety & Intelligence
+                    </span>
+                    <h2 class="section-title">Built-In Protection</h2>
+                    <p class="section-description">
+                        Our system includes multiple safety features to protect your plants and conserve resources.
+                    </p>
+
+                    <div class="safety-features">
+                        <div class="safety-item">
+                            <div class="safety-icon">
+                                <i data-lucide="shield-off"></i>
+                            </div>
+                            <div class="safety-info">
+                                <h4>Overwater Prevention</h4>
+                                <p>Automatically stops irrigation when optimal moisture is reached.</p>
+                            </div>
+                        </div>
+
+                        <div class="safety-item">
+                            <div class="safety-icon">
+                                <i data-lucide="power-off"></i>
+                            </div>
+                            <div class="safety-info">
+                                <h4>Auto Shut-Off</h4>
+                                <p>Motor automatically turns off after the timer expires.</p>
+                            </div>
+                        </div>
+
+                        <div class="safety-item">
+                            <div class="safety-icon">
+                                <i data-lucide="hand"></i>
+                            </div>
+                            <div class="safety-info">
+                                <h4>Manual Override</h4>
+                                <p>Take control anytime with instant manual switching capability.</p>
+                            </div>
+                        </div>
+
+                        <div class="safety-item">
+                            <div class="safety-icon">
+                                <i data-lucide="cloud"></i>
+                            </div>
+                            <div class="safety-info">
+                                <h4>Future-Ready</h4>
+                                <p>Scalable architecture ready for cloud and IoT integrations.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="safety-visual">
+                    <div class="shield-graphic">
+                        <div class="shield-ring ring-1"></div>
+                        <div class="shield-ring ring-2"></div>
+                        <div class="shield-ring ring-3"></div>
+                        <div class="shield-center">
+                            <i data-lucide="shield-check"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="#" class="footer-logo">
+                        <i data-lucide="sprout"></i>
+                        <span>SmartSoil</span>
+                    </a>
+                    <p class="footer-description">
+                        An intelligent IoT-based irrigation system designed to optimize water usage
+                        and promote sustainable agriculture through smart automation.
+                    </p>
+                    <div class="footer-eco">
+                        <i data-lucide="leaf"></i>
+                        <span>Committed to sustainable water management</span>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#monitoring">Monitoring</a></li>
+                            <li><a href="#controls">Controls</a></li>
+                            <li><a href="#how-it-works">How It Works</a></li>
+                            <li><a href="#features">Features</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Technology</h4>
+                        <ul>
+                            <li><a href="#">Soil Sensors</a></li>
+                            <li><a href="#">Microcontroller</a></li>
+                            <li><a href="#">Motor Control</a></li>
+                            <li><a href="#">IoT Gateway</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-project">
+                    <i data-lucide="graduation-cap"></i>
+                    <span>Student Innovation Project • Smart Agriculture Initiative</span>
+                </div>
+                <p class="footer-copyright">
+                    © 2026 Smart Irrigation & Soil Monitoring System. Built with 💚 for a greener future.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+</body>
+
+</html>
